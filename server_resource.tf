@@ -7,10 +7,12 @@ resource "aws_instance" "server_1"{
 		Client = "Ericsson"
 	}
 	count = var.server_coumt
-	security_groups = [
+	/*security_groups = [
 		# Adding Dependency on the Security Group in Server
 		aws_security_group.sg_1.name
-	]
+	]*/
+	vpc_security_group_ids = [aws_security_group.sg_1.id]
+	subnet_id = aws_subnet.public_sn.id
 	availability_zone = var.aws_az
 	
 	provisioner "file" {
