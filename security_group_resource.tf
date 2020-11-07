@@ -14,6 +14,6 @@ resource "aws_security_group" "sg_1"{
 		cidr_blocks = ["0.0.0.0/0"]
 	}
 	tags = {
-		Name = "KUL"
+		Name = var.tagname
 	}
 }
