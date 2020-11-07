@@ -13,4 +13,18 @@ resource "aws_volume_attachment" "attach_volume_1"{
 	instance_id = aws_instance.server_1[count.index].id
 	device_name = "/dev/sdb"
 	skip_destroy = "true"
+	
+	provisioner "remote-exec" {
+		connection {
+			type = "ssh"
+			user = "centos"
+			private_key = file("C:/training/ericsson/aws/batch-1/ericsson-kul.pem")
+			host = aws_instance.server_1[count.index].public_ip
+		}
+		inline = [
+			"sudo mkfs -t ext4 /dev/xvdb",
+			"sudo mkdir /data",
+			"sudo mount /dev/xvdb /data"
+		]
+	}
 }
