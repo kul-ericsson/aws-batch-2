@@ -6,4 +6,8 @@ resource "aws_instance" "server_1"{
 		Client = "Ericsson"
 	}
 	count = 2
+	security_groups = [
+		# Adding Dependency on the Security Group in Server
+		aws_security_group.sg_1.name
+	]
 }
