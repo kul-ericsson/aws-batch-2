@@ -3,5 +3,7 @@ resource "aws_instance" "server_1"{
 	instance_type = "t2.micro"
 	tags = {
 		Name = "KUL"
+		Client = "Ericsson"
 	}
+	count = 2
 }
