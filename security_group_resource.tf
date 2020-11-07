@@ -1,4 +1,5 @@
 resource "aws_security_group" "sg_1"{
+	vpc_id = aws_vpc.kul-vpc.id
 	name = "kul-sg"
 	description = "Created from Terraform by Kul"
 	egress {
