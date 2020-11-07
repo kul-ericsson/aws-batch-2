@@ -12,4 +12,15 @@ resource "aws_instance" "server_1"{
 		aws_security_group.sg_1.name
 	]
 	availability_zone = var.aws_az
+	
+	provisioner "file" {
+		connection {
+			type = "ssh"
+			user = "centos"
+			private_key = file("C:/training/ericsson/aws/batch-1/ericsson-kul.pem")
+			host = self.public_ip
+		}
+		source = "dummy.txt"
+		destination = "/tmp/terraform.tfstate"
+	}
 }
