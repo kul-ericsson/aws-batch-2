@@ -25,3 +25,10 @@ resource "aws_subnet" "private_sn"{
 		Name = "Private"
 	}
 }
+
+resource "aws_internet_gateway" "kul-gateway"{
+	vpc_id = aws_vpc.kul-vpc.id
+	tags = {
+		Name = var.tagname
+	}
+}
