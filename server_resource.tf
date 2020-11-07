@@ -10,4 +10,5 @@ resource "aws_instance" "server_1"{
 		# Adding Dependency on the Security Group in Server
 		aws_security_group.sg_1.name
 	]
+	availability_zone = "us-east-2a"
 }
