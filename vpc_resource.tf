@@ -20,7 +20,7 @@ resource "aws_subnet" "public_sn"{
 resource "aws_subnet" "private_sn"{
 	vpc_id = aws_vpc.kul-vpc.id
 	cidr_block = "10.0.2.0/24"
-	map_public_ip_on_launch = "true"
+	map_public_ip_on_launch = "false"
 	tags = {
 		Name = "Private"
 	}
@@ -42,4 +42,9 @@ resource "aws_route_table" "kul-rt"{
 	tags = {
 		Name = var.tagname
 	}
+}
+
+resource "aws_route_table_association" "attach_public_subnet" {
+	subnet_id = aws_subnet.public_sn.id
+	route_table_id = aws_route_table.kul-rt.id
 }
