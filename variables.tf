@@ -7,7 +7,7 @@ variable "aws_az"{
 }
 
 variable "server_coumt"{
-	default = 2
+	default = 1
 }
 
 variable "tagname" {
