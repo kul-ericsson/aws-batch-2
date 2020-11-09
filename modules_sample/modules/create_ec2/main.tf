@@ -1,5 +1,5 @@
 resource "aws_instance" "module_demo"{
-    ami = "ami-01e36b7901e884a10"
+    ami = var.ami_id
 	instance_type = var.instance_type
 	key_name = "ericsson-kul"
     tags = {
