@@ -22,6 +22,7 @@ resource "aws_volume_attachment" "attach_volume_1"{
 			host = aws_instance.server_1[count.index].public_ip
 		}
 		inline = [
+			"sudo yum install -y mysql",
 			"sudo mkfs -t ext4 /dev/xvdb",
 			"sudo mkdir /data",
 			"sudo mount /dev/xvdb /data"
